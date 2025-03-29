@@ -1,42 +1,38 @@
-document.getElementById('surprise-btn').addEventListener('click', function() {
-    document.getElementById('love-song').play();
-    createFloatingHearts();
-    createSparkles();
-    document.body.classList.add('active-bg');
+document.getElementById("surprise-btn").addEventListener("click", function () {
+    document.getElementById("love-song").play();
+    document.getElementById("gif-container").style.display = "block";
+    document.getElementById("love-letter").classList.add("show-letter");
+    createHearts();
+    createFireworks();
 });
 
-function createFloatingHearts() {
-    for (let i = 0; i < 30; i++) {
-        let heart = document.createElement('div');
-        heart.innerHTML = '❤️';
-        heart.classList.add('heart');
-        document.body.appendChild(heart);
+function createHearts() {
+    const effectsContainer = document.getElementById("effects-container");
+    for (let i = 0; i < 20; i++) {
+        let heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+        effectsContainer.appendChild(heart);
 
-        let x = Math.random() * window.innerWidth;
-        let y = Math.random() * window.innerHeight;
-
-        heart.style.left = `${x}px`;
-        heart.style.top = `${y}px`;
-        heart.style.animationDuration = `${Math.random() * 3 + 2}s`;
-        heart.style.opacity = `${Math.random() + 0.3}`;
-        heart.style.transform = `scale(${Math.random() * 0.5 + 0.5})`;
-
-        setTimeout(() => { heart.remove(); }, 3000);
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
     }
 }
 
-function createSparkles() {
-    for (let i = 0; i < 20; i++) {
-        let sparkle = document.createElement('div');
-        sparkle.classList.add('sparkle');
-        document.body.appendChild(sparkle);
+function createFireworks() {
+    const effectsContainer = document.getElementById("effects-container");
+    for (let i = 0; i < 10; i++) {
+        let firework = document.createElement("div");
+        firework.classList.add("firework");
+        firework.style.left = Math.random() * 100 + "vw";
+        firework.style.top = Math.random() * 100 + "vh";
+        effectsContainer.appendChild(firework);
 
-        let x = Math.random() * window.innerWidth;
-        let y = Math.random() * window.innerHeight;
-
-        sparkle.style.left = `${x}px`;
-        sparkle.style.top = `${y}px`;
-
-        setTimeout(() => { sparkle.remove(); }, 1500);
+        setTimeout(() => {
+            firework.remove();
+        }, 1500);
     }
 }
