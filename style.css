@@ -1,89 +1,116 @@
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    text-align: center;
+    background: #ffebf0;
+}
+
+/* Heart-Shaped Button */
+#surprise-btn {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    background: red;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    clip-path: polygon(50% 15%, 100% 35%, 90% 75%, 50% 100%, 10% 75%, 0% 35%);
+    transition: transform 0.2s ease-in-out;
+}
+
+#surprise-btn:hover {
+    transform: scale(1.1);
+    background: #ff4d4d;
+}
+
+/* Folding Paper Effect */
+#love-letter {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 300px;
+    height: 200px;
+    background: #fff;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    font-family: 'Cursive';
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
-    overflow: hidden;
-    transition: background 3s ease-in-out;
+    opacity: 0;
+    transition: transform 1s ease-out, opacity 1s ease-out;
 }
 
-.container {
-    text-align: center;
-    animation: fadeIn 2s ease-in-out;
+#paper {
+    width: 100%;
+    height: 100%;
+    background: #fdf5e6;
+    border: 2px solid #d4af37;
+    padding: 15px;
+    transform-origin: top;
+    transform: perspective(600px) rotateX(-90deg);
+    transition: transform 1s ease-out;
 }
 
-.card {
-    background: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    animation: fadeInUp 1.5s ease-in-out;
+.show-letter {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
 }
 
-button {
-    background-color: #ff4d6d;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s;
+.show-letter #paper {
+    transform: perspective(600px) rotateX(0deg);
 }
 
-button:hover {
-    background-color: #ff1e4d;
+/* Holding Hands GIF */
+#gif-container {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+/* Floating Hearts & Fireworks */
+@keyframes floatHeart {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
 }
 
-@keyframes fadeInUp {
-    from { transform: translateY(50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+@keyframes fireworks {
+    0% { opacity: 1; transform: scale(0.2); }
+    100% { opacity: 0; transform: scale(2); }
 }
 
-@keyframes heartFloat {
-    0% { transform: scale(0.8) translateY(0); opacity: 1; }
-    50% { transform: scale(1.2) translateY(-50px); opacity: 0.8; }
-    100% { transform: scale(0.8) translateY(0); opacity: 1; }
+#effects-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
 }
 
 .heart {
     position: absolute;
-    font-size: 2.5rem;
     color: red;
-    animation: heartFloat 3s infinite ease-in-out;
-    text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    font-size: 20px;
+    animation: floatHeart 5s linear infinite;
 }
 
-@keyframes backgroundShift {
-    0% { background: linear-gradient(135deg, #ff758c, #ff7eb3); }
-    50% { background: linear-gradient(135deg, #ff007f, #ffae42); }
-    100% { background: linear-gradient(135deg, #ff758c, #ff7eb3); }
-}
-
-.active-bg {
-    animation: backgroundShift 10s infinite alternate;
-}
-
-.sparkle {
+.firework {
     position: absolute;
-    width: 5px;
-    height: 5px;
-    background: white;
+    width: 10px;
+    height: 10px;
+    background: yellow;
     border-radius: 50%;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
-    animation: sparkleFade 1.5s ease-in-out;
-}
-
-@keyframes sparkleFade {
-    from { transform: scale(1); opacity: 1; }
-    to { transform: scale(2); opacity: 0; }
+    animation: fireworks 1.5s ease-out infinite;
 }
