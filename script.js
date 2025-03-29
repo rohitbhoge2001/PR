@@ -1,38 +1,18 @@
-document.getElementById("surprise-btn").addEventListener("click", function () {
+document.getElementById("surprise-button").addEventListener("click", function() {
+    // Play the song
     document.getElementById("love-song").play();
-    document.getElementById("gif-container").style.display = "block";
-    document.getElementById("love-letter").classList.add("show-letter");
-    createHearts();
-    createFireworks();
-});
 
-function createHearts() {
-    const effectsContainer = document.getElementById("effects-container");
-    for (let i = 0; i < 20; i++) {
-        let heart = document.createElement("div");
-        heart.classList.add("heart");
-        heart.innerHTML = "❤️";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = Math.random() * 3 + 2 + "s";
-        effectsContainer.appendChild(heart);
+    // Show the GIF
+    let gif = document.getElementById("love-gif");
+    gif.style.display = "block";
 
-        setTimeout(() => {
-            heart.remove();
-        }, 5000);
-    }
-}
-
-function createFireworks() {
-    const effectsContainer = document.getElementById("effects-container");
-    for (let i = 0; i < 10; i++) {
+    // Fireworks and hearts animation
+    let fireworksContainer = document.querySelector(".fireworks-container");
+    for (let i = 0; i < 15; i++) {
         let firework = document.createElement("div");
-        firework.classList.add("firework");
+        firework.className = "firework";
         firework.style.left = Math.random() * 100 + "vw";
-        firework.style.top = Math.random() * 100 + "vh";
-        effectsContainer.appendChild(firework);
-
-        setTimeout(() => {
-            firework.remove();
-        }, 1500);
+        firework.style.animationDuration = Math.random() * 2 + 2 + "s";
+        fireworksContainer.appendChild(firework);
     }
-}
+});
