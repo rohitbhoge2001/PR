@@ -1,116 +1,58 @@
-/* General Styles */
 body {
     text-align: center;
-    background: #ffebf0;
+    background-color: #ffe6e6;
 }
 
-/* Heart-Shaped Button */
-#surprise-btn {
-    position: relative;
-    width: 120px;
-    height: 120px;
-    background: red;
-    color: white;
-    font-size: 14px;
+.love-letter {
+    font-size: 20px;
     font-weight: bold;
-    text-align: center;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    clip-path: polygon(50% 15%, 100% 35%, 90% 75%, 50% 100%, 10% 75%, 0% 35%);
-    transition: transform 0.2s ease-in-out;
+    margin-top: 50px;
 }
 
-#surprise-btn:hover {
-    transform: scale(1.1);
-    background: #ff4d4d;
-}
-
-/* Folding Paper Effect */
-#love-letter {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    width: 300px;
-    height: 200px;
-    background: #fff;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    padding: 20px;
+#surprise-button {
+    background-color: red;
+    color: white;
     font-size: 16px;
-    font-family: 'Cursive';
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: transform 1s ease-out, opacity 1s ease-out;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: 20px;
 }
 
-#paper {
-    width: 100%;
-    height: 100%;
-    background: #fdf5e6;
-    border: 2px solid #d4af37;
-    padding: 15px;
-    transform-origin: top;
-    transform: perspective(600px) rotateX(-90deg);
-    transition: transform 1s ease-out;
-}
-
-.show-letter {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-}
-
-.show-letter #paper {
-    transform: perspective(600px) rotateX(0deg);
-}
-
-/* Holding Hands GIF */
-#gif-container {
+.gif-container img {
+    width: 200px;
+    height: auto;
     display: none;
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 150px;
+    margin-top: 20px;
 }
 
-/* Floating Hearts & Fireworks */
-@keyframes floatHeart {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(-100vh); opacity: 0; }
-}
-
-@keyframes fireworks {
-    0% { opacity: 1; transform: scale(0.2); }
-    100% { opacity: 0; transform: scale(2); }
-}
-
-#effects-container {
-    position: fixed;
+.fireworks-container {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
     pointer-events: none;
-}
-
-.heart {
-    position: absolute;
-    color: red;
-    font-size: 20px;
-    animation: floatHeart 5s linear infinite;
 }
 
 .firework {
     position: absolute;
     width: 10px;
     height: 10px;
-    background: yellow;
+    background-color: red;
     border-radius: 50%;
-    animation: fireworks 1.5s ease-out infinite;
+    animation: explode 2s linear infinite;
+}
+
+@keyframes explode {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
 }
