@@ -10,24 +10,26 @@ document.addEventListener("DOMContentLoaded", function () {
         video.play();
         
         // Play audio
-        audio.play();
-        audio.loop = true;  // Ensure continuous play
+        audio.play().catch(error => console.log("Autoplay blocked, user must interact"));
 
-        // Create floating hearts
-        for (let i = 0; i < 15; i++) {
-            setTimeout(createHeart, i * 200);
-        }
+        // Start floating hearts
+        setInterval(createHeart, 300);
     });
 
     function createHeart() {
         const heart = document.createElement("div");
         heart.classList.add("heart");
-        heart.style.left = "50%";  // Appear from center
-        heart.style.transform = "translateX(-50%)";  // Adjust center alignment
+        
+        // Random horizontal start position within the screen width
+        heart.style.left = Math.random() * window.innerWidth + "px"; 
+
+        // Random speed for animation
+        heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+
         heartContainer.appendChild(heart);
 
         setTimeout(() => {
             heart.remove();
-        }, 4000); // Remove after animation
+        }, 7000); 
     }
 });
