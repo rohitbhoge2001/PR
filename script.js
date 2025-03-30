@@ -13,21 +13,24 @@ document.addEventListener("DOMContentLoaded", function () {
         audio.play();
         audio.loop = true;  // Ensure continuous play
 
-        // Create floating hearts
-        for (let i = 0; i < 15; i++) {
-            setTimeout(createHeart, i * 200);
+        // Generate hearts
+        for (let i = 0; i < 20; i++) {
+            setTimeout(createHeart, i * 300);
         }
     });
 
     function createHeart() {
         const heart = document.createElement("div");
         heart.classList.add("heart");
-        heart.style.left = "50%";  // Appear from center
-        heart.style.transform = "translateX(-50%)";  // Adjust center alignment
+
+        // Random horizontal position (across full width)
+        const randomLeft = Math.random() * 100;
+        heart.style.left = `${randomLeft}%`;
+
         heartContainer.appendChild(heart);
 
         setTimeout(() => {
             heart.remove();
-        }, 4000); // Remove after animation
+        }, 5000); // Remove after animation
     }
 });
