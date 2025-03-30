@@ -51,7 +51,7 @@ p {
 
 #love-video {
     width: 90%;
-    max-width: 400px; /* Ensures correct aspect ratio */
+    max-width: 400px;
     border-radius: 10px;
     display: none; /* Initially hidden */
 }
@@ -60,8 +60,9 @@ p {
 #heart-container {
     position: fixed;
     bottom: 0;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
     height: 100%;
     pointer-events: none;
     overflow: hidden;
