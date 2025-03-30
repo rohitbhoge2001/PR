@@ -1,36 +1,33 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const loveButton = document.getElementById("love-button");
-    const videoContainer = document.getElementById("video-container");
-    const video = document.getElementById("love-video");
-    const audio = document.getElementById("love-song");
-    const heartContainer = document.getElementById("heart-container");
+document.getElementById("love-button").addEventListener("click", function () {
+    let video = document.getElementById("love-video");
+    let audio = document.getElementById("love-song");
+    let videoContainer = document.getElementById("video-container");
 
-    loveButton.addEventListener("click", function () {
-        // Show video container
-        videoContainer.style.display = "block";
+    // Show the video and play it
+    videoContainer.style.display = "block";
+    video.play();
 
-        // Play video and audio
-        video.play();
-        audio.play();
-        audio.loop = true;
+    // Play the audio
+    audio.play();
+    audio.loop = true;
 
-        // Generate hearts
-        for (let i = 0; i < 20; i++) {
-            setTimeout(createHeart, i * 300);
-        }
-    });
+    // Start floating hearts
+    createHearts();
+});
 
-    function createHeart() {
-        const heart = document.createElement("div");
+function createHearts() {
+    let heartContainer = document.getElementById("heart-container");
+    
+    setInterval(() => {
+        let heart = document.createElement("div");
         heart.classList.add("heart");
-
-        // Random horizontal position (across full width)
-        heart.style.left = `${Math.random() * 100}%`;
+        heart.style.left = Math.random() * window.innerWidth + "px"; // Random horizontal position
+        heart.style.animationDuration = 4 + Math.random() * 3 + "s"; // Vary speed
 
         heartContainer.appendChild(heart);
 
         setTimeout(() => {
             heart.remove();
-        }, 5000);
-    }
-});
+        }, 7000);
+    }, 300);
+}
