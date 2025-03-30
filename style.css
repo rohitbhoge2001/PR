@@ -1,68 +1,38 @@
 body {
-    background-color: #ffebef;
-    text-align: center;
     font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #ffe6e6;
 }
 
 .container {
-    padding: 20px;
+    margin-top: 50px;
 }
 
 h1 {
     color: #d63384;
+    font-size: 2em;
 }
 
 p {
-    font-size: 18px;
-    color: #333;
+    font-size: 1.2em;
 }
 
-#love-button {
+button {
     background-color: #ff4d6d;
     color: white;
-    font-size: 16px;
-    padding: 10px 20px;
     border: none;
-    cursor: pointer;
+    padding: 15px 25px;
+    font-size: 1.2em;
     border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    position: relative;
-    margin: 20px auto;
+    cursor: pointer;
 }
 
-#gif-container {
-    display: none;
+#video-container {
     margin-top: 20px;
 }
 
-#gif-container img {
-    width: 60%;
-    border-radius: 10px;
-}
-
-.hearts {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.heart {
-    position: absolute;
-    bottom: -10px;
-    width: 20px;
-    height: 20px;
-    background: red;
-    clip-path: polygon(50% 0%, 100% 35%, 85% 100%, 50% 75%, 15% 100%, 0% 35%);
-    opacity: 0.7;
-    animation: float 5s linear infinite;
-}
-
-@keyframes float {
-    0% { transform: translateY(0) scale(1); opacity: 1; }
-    100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+video {
+    width: 80%;
+    max-width: 500px;
+    border-radius: 15px;
 }
