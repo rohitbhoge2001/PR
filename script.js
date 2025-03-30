@@ -1,33 +1,33 @@
-document.getElementById("love-button").addEventListener("click", function () {
-    let video = document.getElementById("love-video");
-    let audio = document.getElementById("love-song");
-    let videoContainer = document.getElementById("video-container");
+document.addEventListener("DOMContentLoaded", function () {
+    const loveButton = document.getElementById("love-button");
+    const video = document.getElementById("love-video");
+    const audio = document.getElementById("love-song");
+    const heartContainer = document.getElementById("heart-container");
 
-    // Show the video and play it
-    videoContainer.style.display = "block";
-    video.play();
+    loveButton.addEventListener("click", function () {
+        // Show video and start playing
+        video.style.display = "block";
+        video.play();
+        
+        // Play audio
+        audio.play();
+        audio.loop = true;  // Ensure continuous play
 
-    // Play the audio
-    audio.play();
-    audio.loop = true;
+        // Create floating hearts
+        for (let i = 0; i < 15; i++) {
+            setTimeout(createHeart, i * 200);
+        }
+    });
 
-    // Start floating hearts
-    createHearts();
-});
-
-function createHearts() {
-    let heartContainer = document.getElementById("heart-container");
-    
-    setInterval(() => {
-        let heart = document.createElement("div");
+    function createHeart() {
+        const heart = document.createElement("div");
         heart.classList.add("heart");
-        heart.style.left = Math.random() * window.innerWidth + "px"; // Random horizontal position
-        heart.style.animationDuration = 4 + Math.random() * 3 + "s"; // Vary speed
-
+        heart.style.left = "50%";  // Appear from center
+        heart.style.transform = "translateX(-50%)";  // Adjust center alignment
         heartContainer.appendChild(heart);
 
         setTimeout(() => {
             heart.remove();
-        }, 7000);
-    }, 300);
-}
+        }, 4000); // Remove after animation
+    }
+});
